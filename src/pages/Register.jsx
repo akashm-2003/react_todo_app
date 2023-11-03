@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Context, server } from "../main";
 import toast from "react-hot-toast";
+import { applyApi } from "../../api";
 
 const Register = () => {
   const [name, setName] = useState("");

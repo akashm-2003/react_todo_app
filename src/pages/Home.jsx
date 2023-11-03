@@ -63,6 +63,7 @@ const Home = () => {
 
       setTitle("");
       setDescription("");
+      console.log(data);
       toast.success(data.message);
       setLoading(false);
       setRefresh((prev) => !prev);
