@@ -74,14 +74,14 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/task/my`, {
+      .get(`${server}/task/myTask`, {
         withCredentials: true,
       })
       .then((res) => {
-        setTasks(res.data.tasks);
+        setTasks(res.data.task);
       })
       .catch((e) => {
-        toast.error(e.response.data.message);
+        toast.error(e.message);
       });
   }, [refresh]);
 

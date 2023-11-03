@@ -23,6 +23,7 @@ const Login = () => {
         },
         {
           headers: {
+            // "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
           },
           withCredentials: true,
@@ -33,7 +34,7 @@ const Login = () => {
       setIsAuthenticated(true);
       setLoading(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.message);
       setLoading(false);
       setIsAuthenticated(false);
     }
@@ -59,7 +60,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button disabled={loading} type="submit">
+          <button type="submit">
             Login
           </button>
           <h4>Or</h4>

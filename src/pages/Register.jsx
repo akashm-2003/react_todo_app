@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
 import { Context, server } from "../main";
 import toast from "react-hot-toast";
 
@@ -15,8 +15,8 @@ const Register = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        `${server}/users/new`,
+      const {data }= await axios.post(
+        `${server}/users/register`,
         {
           name,
           email,
@@ -29,12 +29,13 @@ const Register = () => {
           withCredentials: true,
         }
       );
-
+      console.log(data);
       toast.success(data.message);
       setIsAuthenticated(true);
       setLoading(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.log(error);
+      toast.error(error.message);
       setIsAuthenticated(false);
       setLoading(false);
     }
