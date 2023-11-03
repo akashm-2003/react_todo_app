@@ -63,6 +63,7 @@ const Home = () => {
 
       setTitle("");
       setDescription("");
+      console.log(data);
       toast.success(data.message);
       setLoading(false);
       setRefresh((prev) => !prev);
@@ -74,11 +75,12 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/task/my`, {
+      .get(`${server}/task/myTask`, {
         withCredentials: true,
       })
       .then((res) => {
-        setTasks(res.data.tasks);
+        // console.log(res.data);
+        setTasks(res.data.task);
       })
       .catch((e) => {
         toast.error(e.response.data.message);

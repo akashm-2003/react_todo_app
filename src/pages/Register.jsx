@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../main";
 import toast from "react-hot-toast";
+import { applyApi } from "../../api";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,21 +16,7 @@ const Register = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        `${server}/users/new`,
-        {
-          name,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-
+      const { data } = await applyApi('/users/register', 'POST', { name, email, password })
       toast.success(data.message);
       setIsAuthenticated(true);
       setLoading(false);

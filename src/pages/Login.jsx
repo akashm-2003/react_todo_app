@@ -22,10 +22,10 @@ const Login = () => {
           password,
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
         }
       );
 
@@ -59,9 +59,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button disabled={loading} type="submit">
-            Login
-          </button>
+          <button type="submit">Login</button>
           <h4>Or</h4>
           <Link to="/register">Sign Up</Link>
         </form>
