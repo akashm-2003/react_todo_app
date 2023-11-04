@@ -29,12 +29,11 @@ const Login = () => {
           },
         }
       );
-
       toast.success(data.message);
       setIsAuthenticated(true);
       setLoading(false);
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message);
       setLoading(false);
       setIsAuthenticated(false);
     }

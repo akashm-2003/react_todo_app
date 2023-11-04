@@ -81,8 +81,8 @@ const Home = () => {
       .then((res) => {
         setTasks(res.data.task);
       })
-      .catch((e) => {
-        toast.error(e.message);
+      .catch((error) => {
+        toast.error(error.response.data.message);
       });
   }, [refresh]);
 
@@ -116,7 +116,7 @@ const Home = () => {
       </div>
 
       <section className="todosContainer">
-        {tasks.map((i) => (
+        {tasks&&tasks.map((i) => (
           <TodoItem
             title={i.title}
             description={i.description}
